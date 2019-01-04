@@ -1,2 +1,5 @@
 #pragma once
-int main();
+#include "Registry.hpp";
+#include "Config.hpp";
+
+int main(const int argc, const char** argv);
