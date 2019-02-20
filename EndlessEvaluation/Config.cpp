@@ -46,21 +46,9 @@ void edit_config(const vector<string>& programs)
 		if (!dir.is_directory()) continue;
 
 		const string dir_name = dir.path().filename().string();
-		if (dir_name[0] != '.') continue;
-
 		for (const auto& program : programs)
 		{
-			bool match = true;
-			const int program_len = program.size();
-			const int dir_name_len = dir_name.size();
-			int i = 0;
-			for (int j = 1; i < program_len && j < dir_name_len && match; ++i, ++j)
-			{
-				match &= program[i] == tolower(dir_name[j]);
-			}
-			match |= i == program_len;
-
-			if (match)
+			if (regex_match(dir_name.c_str(), regex("." + program + R"(20\d{2}\.\d)", std::regex_constants::icase)))
 				clean_dir(dir);
 		}
 	}

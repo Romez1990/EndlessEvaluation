@@ -1,6 +1,7 @@
 #pragma once
 #include "Main.hpp"
 #include <filesystem>
+#include <regex>
 #include <shlobj.h>
 
 namespace fs = filesystem;
